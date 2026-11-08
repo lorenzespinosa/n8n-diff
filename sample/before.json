@@ -1,0 +1,40 @@
+{
+  "id": "w-101",
+  "name": "Order sync",
+  "nodes": [
+    {
+      "parameters": { "httpMethod": "POST", "path": "orders" },
+      "id": "n-1",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [-160, 0]
+    },
+    {
+      "parameters": { "url": "https://api.example.com/v1/orders", "options": {} },
+      "id": "n-2",
+      "name": "Create order",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [240, 0]
+    },
+    {
+      "parameters": { "text": "Order created" },
+      "id": "n-3",
+      "name": "Slack alert",
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.1,
+      "position": [640, 0]
+    }
+  ],
+  "connections": {
+    "Webhook": { "main": [[{ "node": "Create order", "type": "main", "index": 0 }]] },
+    "Create order": { "main": [[{ "node": "Slack alert", "type": "main", "index": 0 }]] }
+  },
+  "pinData": {},
+  "active": false,
+  "settings": {},
+  "versionId": "v-12",
+  "meta": { "instanceId": "inst-1" },
+  "updatedAt": "2026-01-06T09:00:00.000Z"
+}

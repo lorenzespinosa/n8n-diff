@@ -1,0 +1,40 @@
+{
+  "id": "w-101",
+  "name": "Order sync",
+  "nodes": [
+    {
+      "parameters": { "httpMethod": "POST", "path": "orders" },
+      "id": "n-9",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [-200, 0]
+    },
+    {
+      "parameters": { "url": "https://api.example.com/v2/orders", "options": { "timeout": 5000 } },
+      "id": "n-8",
+      "name": "Create order",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [240, 0]
+    },
+    {
+      "parameters": { "jsCode": "return [];" },
+      "id": "n-7",
+      "name": "Log failure",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [640, 0]
+    }
+  ],
+  "connections": {
+    "Webhook": { "main": [[{ "node": "Create order", "type": "main", "index": 0 }]] },
+    "Create order": { "main": [[{ "node": "Log failure", "type": "main", "index": 0 }]] }
+  },
+  "pinData": {},
+  "active": true,
+  "settings": {},
+  "versionId": "v-13",
+  "meta": { "instanceId": "inst-1" },
+  "updatedAt": "2026-01-08T14:30:00.000Z"
+}

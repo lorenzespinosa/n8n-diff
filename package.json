@@ -1,0 +1,30 @@
+{
+  "name": "n8n-diff",
+  "version": "0.1.0",
+  "description": "Compare two exported n8n workflow JSON files and print what actually changed",
+  "license": "MIT",
+  "author": "Lorenz Espinosa",
+  "type": "module",
+  "main": "src/diff.js",
+  "bin": {
+    "n8n-diff": "src/cli.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "test": "node --test"
+  },
+  "keywords": [
+    "n8n",
+    "diff",
+    "workflow",
+    "review",
+    "cli"
+  ],
+  "files": [
+    "src",
+    "README.md",
+    "LICENSE"
+  ]
+}
